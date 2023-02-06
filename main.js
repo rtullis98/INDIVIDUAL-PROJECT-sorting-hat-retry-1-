@@ -4,6 +4,21 @@ const students = [
     name: "Ron Weasley",
     house: "Gryffindor",
   },
+  {
+    id: 2,
+    name: "Cedric Diggory",
+    house: "Gryffindor",
+  }
+  {
+    id: 3,
+    name: "Luna Lovegood",
+    house: "Ravenclaw",
+  }
+  {
+    id: 4,
+    name: "Draco Malfoy",
+    house: "Slytherin",
+  }
 ];
 
 // Empty array for expelled students//

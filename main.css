@@ -1,0 +1,8 @@
+#app {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card {
+  margin: 10px;
+}
