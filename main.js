@@ -48,3 +48,27 @@ const expelledStudentsOnDom = (array) => {
 
   renderToDom("#expelled", domString);
 };
+
+
+//Function to actually expel a student//
+const expelStudent = (event) => {
+  // if the id includes "retireButton"
+  if (event.target.id.includes("expelButton")) {
+    // get that object id off of our target ID
+    const [, studentId] = event.target.id.split("--");
+    // Use it to find the index of the object
+    const studentIndex = students.findIndex(
+      (student) => Number(studentId) === student.id
+    );
+
+    // splice that object out of the array
+    const expelledStudent = students.splice(studentIndex, 1);
+
+    // push our instructor into the retiredInstructor array
+    expelledStudents.push(expelledStudent);
+
+    // Render both of our arrays! Retired and regular.
+    expelledStudentsOnDom(expelledStudent);
+    studentsOnDom(students);
+  }
+};
