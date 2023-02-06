@@ -74,7 +74,6 @@ const expelStudent = (event) => {
 };
 
 
-
 //Function to filter students by house//
 const filter = (array, houseString) => {
   const studentsArray = [];
@@ -87,3 +86,41 @@ const filter = (array, houseString) => {
 
   return studentsArray;
 };
+
+//Targeting house filter buttons on the DOM//
+const allButton = document.querySelector("#allButton");
+const gButton = document.querySelector("#gButton");
+const hButton = document.querySelector("#hButton");
+const rButton = document.querySelector("#rButton");
+const sButton = document.querySelector("#sButton");
+
+//Adding click events to add functionality to the buttons//
+
+//ALL BUTTON//
+allButton.addEventListener("click", () => {
+  studentsOnDom(students);
+});
+
+//Gryffindor//
+gButton.addEventListener("click", () => {
+  const gStudents = filter(students, "Gryffindor")
+  studentsOnDom(gStudents);
+});
+
+//Hufflepuff//
+hButton.addEventListener("click", () => {
+  const hStudents = filter(students, "Hufflepuff")
+  studentsOnDom(hStudents);
+});
+
+//Ravenclaw//
+rButton.addEventListener("click", () => {
+  const rStudents = filter(students, "Ravenclaw")
+  studentsOnDom(rStudents);
+});
+
+//Slytherin//
+sButton.addEventListener("click", () => {
+  const sStudents = filter(students, "Slytherin")
+  studentsOnDom(sStudents);
+});
