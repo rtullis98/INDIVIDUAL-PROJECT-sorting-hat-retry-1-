@@ -15,3 +15,21 @@ const renderToDom = (divID, htmlToRender) => {
 
   selectedDiv.innerHTML = htmlToRender
 }
+
+//Getting my student cards on the DOM//
+const cardsOnDom = (array) => {
+  let domString = "";
+  for (const student of array) {
+    domString += `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <p class="card-text">${student.name}</p>
+    </div>
+    <button id="expelButton--${student.id}" class="btn btn-primary">Expel</button>
+  </div>`;    
+  }
+};
+
+//Rendering cards and adding event listener for expel button//
+renderToDom ("#app", domString);
+
+document.querySelector('#app').addEventListener("click", expelStudent);
