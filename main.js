@@ -139,3 +139,49 @@ sButton.addEventListener("click", () => {
   const sStudents = filter(students, "Slytherin")
   studentsOnDom(sStudents);
 });
+
+
+//****FORM FUNCTIONS */ */
+
+//Function to show the form input - creating domString to input form into//
+
+const showForm = () => {
+  const domString = 
+
+//Form from Bootstrap below://
+'<input id="nameForm" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/><button type="submit" class="btn btn-success" id="form-submit">Sort</button>';
+
+  // Render that to the Dom (#form referring to empty DIV for form.)//
+  renderToDom("#form", domString);
+
+  //Adding an event listener to my submit button (found within the form from bootstrap code above - cut form and button from HTML into JS)//
+  document.querySelector("#form-submit")
+  .addEventListener("click", addNewStudent)
+};
+
+//Target Begin button to show the form once clicked//
+document.querySelector("#beginButton").addEventListener("click", showForm)
+
+//***Function to add new student using the form***//
+
+//Declare variable and event//
+const addNewStudent = (event) => {
+  event.preventDefault();
+
+//Using math random (*4 for complete range of student array) to create random number for new student
+const randNum = Math.floor(Math.random() *6);
+
+//New variable to grab a random student template for new student. Random number is an index.//
+const randomStudent = students[randNum];
+
+//New student object//
+const newStudent = {
+  id: students.length + 2,
+  name: document.querySelector("#nameForm").value,
+  house: randomStudent.house,
+};
+
+//Finally, pushing the new student to the students array, and adding it to the DOM//
+students.push(newStudent)
+studentsOnDom(students)
+};
