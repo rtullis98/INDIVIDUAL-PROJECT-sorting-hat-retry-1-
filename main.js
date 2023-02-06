@@ -5,3 +5,6 @@ const students = [
     house: "Gryffindor",
   },
 ];
+
+// Empty array for expelled students//
+const expelledStudents = [];
