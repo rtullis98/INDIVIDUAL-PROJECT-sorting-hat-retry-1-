@@ -7,13 +7,13 @@ const students = [
   {
     id: 2,
     name: "Cedric Diggory",
-    house: "Gryffindor",
-  }
+    house: "Hufflepuff",
+  },
   {
     id: 3,
     name: "Luna Lovegood",
     house: "Ravenclaw",
-  }
+  },
   {
     id: 4,
     name: "Draco Malfoy",
