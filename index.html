@@ -4,16 +4,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!--Bootstrap CSS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
   rel="stylesheet" 
   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
   crossorigin="anonymous"/>
+
   <!--Main CSS-->
   <link rel="stylesheet" href="main.css">
   <title>Hogwarts Sorting Hat</title>
+
 </head>
 <body>
+
 <!--Sorting Hat Container With Heading Text, "Begin" Button, and Form-->  
  <div class="sortingHat-container">
   <h1 class="header-text">Welcome to Hoggy Hoggy Warts, RELOADED!</h1>
@@ -29,12 +33,23 @@
   </form>  
  </div>
 
+<!--Filter Buttons for the different houses--> 
  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
   <button type="button" class="btn btn-secondary">All</button>
   <button type="button" class="btn btn-danger">Gryffindor</button>
   <button type="button" class="btn btn-warning">Hufflepuff</button>
   <button type="button" class="btn btn-primary">Ravenclaw</button>
   <button type="button" class="btn btn-success">Slytherin</button>
+</div>
+
+<!--Student Containers-->
+<div id="studentContainers">
+  <div class="regularStudents">
+    <h3 class="firstYearHeading">First Year's</h3>
+  </div>
+  <div class="expelledStudents">
+    <h3 class="voldemortHeading">Voldemort's Army</h3>
+  </div>
 </div>
 
 <!--Bootstrap JS-->
