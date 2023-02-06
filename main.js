@@ -72,3 +72,18 @@ const expelStudent = (event) => {
     studentsOnDom(students);
   }
 };
+
+
+
+//Function to filter students by house//
+const filter = (array, houseString) => {
+  const studentsArray = [];
+
+  for (const student of array) {
+    if (student.house === houseString) {
+      studentsArray.push(student);
+    }
+  }
+
+  return studentsArray;
+};
