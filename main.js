@@ -22,7 +22,12 @@ const students = [
 ];
 
 // Empty array for expelled students//
-const expelledStudents = [];
+const expelledStudents = [
+  {
+    id: 1,
+    name: "Evil McBadperson"
+  }
+];
 
 //Render to DOM utility function//
 const renderToDom = (divID, htmlToRender) => {
@@ -37,17 +42,22 @@ const studentsOnDom = (array) => {
   for (const student of array) {
     domString += `<div class="card" style="width: 18rem;">
     <div class="card-body">
-      <p class="card-text">${student.name}</p>
+      <h5 class="card-header">${student.name}</h5>
+      <p class="card-text">${student.house}</p>
     </div>
     <button id="expelButton--${student.id}" class="btn btn-primary">Expel</button>
   </div>`;    
   }
 
-//Rendering cards and adding event listener for expel button//
-renderToDom ("#app", domString);
+  //Rendering cards and adding event listener for expel button//
+  renderToDom (".regularStudents", domString);
 
-document.querySelector('#app').addEventListener("click", expelStudent);
 };
+
+
+
+//document.querySelector('#app').addEventListener("click", expelStudent);
+//};
 
 
 //Function to render Expelled cards on the DOM//
@@ -61,32 +71,36 @@ const expelledStudentsOnDom = (array) => {
   </div>`;    
   }
 
-  renderToDom("#expelled", domString);
+  renderToDom(".expelledStudents", domString);
 };
-
 
 //Function to actually expel a student//
-const expelStudent = (event) => {
-  // if the id includes "retireButton"
+const newVar = document.querySelector(".regularStudents");
+
+newVar.addEventListener("click", (event) => {
+  console.log(event.target.id)
+  //Checking if id includes expelButton
   if (event.target.id.includes("expelButton")) {
-    // get that object id off of our target ID
+
+    //Splitting that id with the target id
     const [, studentId] = event.target.id.split("--");
-    // Use it to find the index of the object
+
+    // Using that id to find the index of the object
     const studentIndex = students.findIndex(
-      (student) => Number(studentId) === student.id
+      (event) => event.id  === Number(studentId)
     );
 
-    // splice that object out of the array
-    const expelledStudent = students.splice(studentIndex, 1);
+    // Using splice to move the expelled student out of the students array
+    const badStudent = students.splice(studentIndex, 1);
 
-    // push our instructor into the retiredInstructor array
-    expelledStudents.push(expelledStudent);
-
-    // Render both of our arrays! Retired and regular.
-    expelledStudentsOnDom(expelledStudent);
+    //Pushing the expelled student into the expelledStudents array
+    expelledStudents.push(...badStudent);
+      console.log(badStudent)
+    //Then finally rendering both arrays
     studentsOnDom(students);
+    expelledStudentsOnDom(expelledStudents);
   }
-};
+});
 
 
 //Function to filter students by house//
@@ -110,6 +124,9 @@ const rButton = document.querySelector("#rButton");
 const sButton = document.querySelector("#sButton");
 
 //Adding click events to add functionality to the buttons//
+
+studentsOnDom(students)
+expelledStudentsOnDom(expelledStudents)
 
 //ALL BUTTON//
 allButton.addEventListener("click", () => {
@@ -176,12 +193,23 @@ const randomStudent = students[randNum];
 
 //New student object//
 const newStudent = {
-  id: students.length + 2,
+  id: students.length + 1,
   name: document.querySelector("#nameForm").value,
-  house: randomStudent.house,
+  house: randomStudent.house
 };
 
+
+
 //Finally, pushing the new student to the students array, and adding it to the DOM//
+console.log(newStudent)
 students.push(newStudent)
 studentsOnDom(students)
+
+document.querySelector("nameForm").reset()
 };
+
+//const startApp = () => {
+  //renderStudents(students);
+//};
+
+//startApp();
